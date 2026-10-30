@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10172b">
+  <title>Octo Search</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      background: #10172b;
+      color: #f5f2ff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      padding: 2rem 1rem;
+      background:
+        radial-gradient(ellipse at 50% 30%, #29325b 0, transparent 56%),
+        linear-gradient(160deg, #10172b, #17132d 75%);
+    }
+
+    main {
+      width: min(100%, 980px);
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.4rem, 7vw, 4.5rem);
+      letter-spacing: -0.06em;
+    }
+
+    .intro {
+      margin: 0.5rem 0 1.5rem;
+      color: #c4c7e4;
+      font-size: 1.05rem;
+    }
+
+    .art {
+      overflow: hidden;
+      border: 1px solid #ffffff20;
+      border-radius: 2rem;
+      background: linear-gradient(180deg, #20264a99, #151a32cc);
+      box-shadow: 0 24px 80px #05081780;
+    }
+
+    svg {
+      display: block;
+      width: 100%;
+      height: auto;
+      min-height: 300px;
+    }
+
+    .tentacle {
+      fill: none;
+      stroke: transparent;
+      stroke-width: 46;
+      stroke-linecap: round;
+      pointer-events: stroke;
+    }
+
+    .tentacle-shadow {
+      fill: none;
+      stroke: #75489d;
+      stroke-width: 31;
+      stroke-linecap: round;
+      pointer-events: none;
+    }
+
+    .tentacle-color {
+      fill: none;
+      stroke: url(#arm-gradient);
+      stroke-width: 25;
+      stroke-linecap: round;
+      pointer-events: none;
+      transition: stroke 160ms ease, stroke-width 160ms ease;
+    }
+
+    .suckers {
+      fill: #f0caff;
+      stroke: #9c64bf;
+      stroke-width: 2;
+      pointer-events: none;
+    }
+
+    .sucker-center {
+      fill: #bd83db;
+      stroke: none;
+    }
+
+    .leg-link:hover .tentacle-shadow,
+    .leg-link:focus-visible .tentacle-shadow {
+      stroke: #a16d39;
+    }
+
+    .leg-link:hover .tentacle-color,
+    .leg-link:focus-visible .tentacle-color {
+      stroke: #ffd479;
+      stroke-width: 28;
+    }
+
+    .leg-link:focus-visible {
+      outline: none;
+    }
+
+    .leg-label {
+      fill: #fff;
+      font-size: 17px;
+      font-weight: 700;
+      paint-order: stroke;
+      stroke: #171a35;
+      stroke-width: 5px;
+      stroke-linejoin: round;
+      pointer-events: none;
+    }
+
+    .body-shape {
+      fill: #db91ff;
+      stroke: #f4c9ff;
+      stroke-width: 4;
+    }
+
+    .head-link {
+      cursor: pointer;
+    }
+
+    .head-link:hover .body-shape,
+    .head-link:focus-visible .body-shape {
+      stroke: #ffd479;
+      stroke-width: 7;
+    }
+
+    .eye {
+      fill: #292044;
+    }
+
+    .shine {
+      fill: #fff;
+    }
+
+    .spots {
+      fill: #a863d2;
+      opacity: 0.72;
+    }
+
+    .hint {
+      margin: 1.25rem 0 0;
+      color: #c4c7e4;
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 1.5rem 0.6rem;
+      }
+
+      .art {
+        border-radius: 1.25rem;
+      }
+
+      .leg-label {
+        font-size: 19px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Octo Search</h1>
+    <p class="intro">Eight arms, eight ways to explore the web.</p>
+
+    <div class="art">
+      <svg viewBox="0 0 900 590" role="img" aria-labelledby="octo-title octo-description">
+        <title id="octo-title">Octopus with links to eight search engines</title>
+        <desc id="octo-description">Choose a search engine by selecting its labeled tentacle.</desc>
+
+        <defs>
+          <radialGradient id="mantle" cx="38%" cy="28%" r="80%">
+            <stop offset="0" stop-color="#ffd1ff"/>
+            <stop offset="1" stop-color="#c475ed"/>
+          </radialGradient>
+          <linearGradient id="arm-gradient" x1="0" y1="0" x2="0.8" y2="1">
+            <stop offset="0" stop-color="#f0baff"/>
+            <stop offset="0.55" stop-color="#ce8bef"/>
+            <stop offset="1" stop-color="#a764d0"/>
+          </linearGradient>
+        </defs>
+
+        <g class="leg-link">
+          <a href="https://www.google.com/" target="_blank" rel="noopener noreferrer" aria-label="Search with Google">
+            <path class="tentacle" d="M365 247 C315 300 267 385 70 477"/>
+            <path class="tentacle-shadow" d="M365 247 C315 300 267 385 70 477"/>
+            <path class="tentacle-color" d="M365 247 C315 300 267 385 70 477"/>
+            <g class="suckers">
+              <circle cx="293" cy="301" r="5"/><circle class="sucker-center" cx="293" cy="301" r="2"/>
+              <circle cx="250" cy="350" r="5"/><circle class="sucker-center" cx="250" cy="350" r="2"/>
+              <circle cx="204" cy="391" r="5"/><circle class="sucker-center" cx="204" cy="391" r="2"/>
+              <circle cx="156" cy="427" r="5"/><circle class="sucker-center" cx="156" cy="427" r="2"/>
+              <circle cx="108" cy="458" r="5"/><circle class="sucker-center" cx="108" cy="458" r="2"/>
+            </g>
+            <text class="leg-label" x="48" y="516">Google</text>
+          </a>
+        </g>
+        <g class="leg-link">
+          <a href="https://www.bing.com/" target="_blank" rel="noopener noreferrer" aria-label="Search with Bing">
+            <path class="tentacle" d="M390 263 C350 335 330 425 178 525"/>
+            <path class="tentacle-shadow" d="M390 263 C350 335 330 425 178 525"/>
+            <path class="tentacle-color" d="M390 263 C350 335 330 425 178 525"/>
+            <g class="suckers">
+              <circle cx="361" cy="329" r="5"/><circle class="sucker-center" cx="361" cy="329" r="2"/>
+              <circle cx="346" cy="389" r="5"/><circle class="sucker-center" cx="346" cy="389" r="2"/>
+              <circle cx="317" cy="442" r="5"/><circle class="sucker-center" cx="317" cy="442" r="2"/>
+              <circle cx="271" cy="483" r="5"/><circle class="sucker-center" cx="271" cy="483" r="2"/>
+              <circle cx="222" cy="513" r="5"/><circle class="sucker-center" cx="222" cy="513" r="2"/>
+            </g>
+            <text class="leg-label" x="147" y="563">Bing</text>
+          </a>
+        </g>
+        <g class="leg-link">
+          <a href="https://duckduckgo.com/" target="_blank" rel="noopener noreferrer" aria-label="Search with DuckDuckGo">
+            <path class="tentacle" d="M418 270 C400 350 410 430 290 505"/>
+            <path class="tentacle-shadow" d="M418 270 C400 350 410 430 290 505"/>
+            <path class="tentacle-color" d="M418 270 C400 350 410 430 290 505"/>
+            <g class="suckers">
+              <circle cx="408" cy="339" r="5"/><circle class="sucker-center" cx="408" cy="339" r="2"/>
+              <circle cx="408" cy="399" r="5"/><circle class="sucker-center" cx="408" cy="399" r="2"/>
+              <circle cx="387" cy="449" r="5"/><circle class="sucker-center" cx="387" cy="449" r="2"/>
+              <circle cx="351" cy="480" r="5"/><circle class="sucker-center" cx="351" cy="480" r="2"/>
+              <circle cx="318" cy="499" r="5"/><circle class="sucker-center" cx="318" cy="499" r="2"/>
+            </g>
+            <text class="leg-label" x="241" y="543">DuckDuckGo</text>
+          </a>
+        </g>
+        <g class="leg-link">
+          <a href="https://search.yahoo.com/" target="_blank" rel="noopener noreferrer" aria-label="Search with Yahoo">
+            <path class="tentacle" d="M440 276 C435 355 470 420 398 490"/>
+            <path class="tentacle-shadow" d="M440 276 C435 355 470 420 398 490"/>
+            <path class="tentacle-color" d="M440 276 C435 355 470 420 398 490"/>
+            <g class="suckers">
+              <circle cx="437" cy="344" r="5"/><circle class="sucker-center" cx="437" cy="344" r="2"/>
+              <circle cx="445" cy="394" r="5"/><circle class="sucker-center" cx="445" cy="394" r="2"/>
+              <circle cx="444" cy="435" r="5"/><circle class="sucker-center" cx="444" cy="435" r="2"/>
+              <circle cx="425" cy="466" r="5"/><circle class="sucker-center" cx="425" cy="466" r="2"/>
+              <circle cx="410" cy="482" r="5"/><circle class="sucker-center" cx="410" cy="482" r="2"/>
+            </g>
+            <text class="leg-label" x="366" y="529">Yahoo</text>
+          </a>
+        </g>
+        <g class="leg-link">
+          <a href="https://search.brave.com/" target="_blank" rel="noopener noreferrer" aria-label="Search with Brave Search">
+            <path class="tentacle" d="M460 276 C465 355 430 420 502 490"/>
+            <path class="tentacle-shadow" d="M460 276 C465 355 430 420 502 490"/>
+            <path class="tentacle-color" d="M460 276 C465 355 430 420 502 490"/>
+            <g class="suckers">
+              <circle cx="463" cy="344" r="5"/><circle class="sucker-center" cx="463" cy="344" r="2"/>
+              <circle cx="455" cy="394" r="5"/><circle class="sucker-center" cx="455" cy="394" r="2"/>
+              <circle cx="456" cy="435" r="5"/><circle class="sucker-center" cx="456" cy="435" r="2"/>
+              <circle cx="475" cy="466" r="5"/><circle class="sucker-center" cx="475" cy="466" r="2"/>
+              <circle cx="490" cy="482" r="5"/><circle class="sucker-center" cx="490" cy="482" r="2"/>
+            </g>
+            <text class="leg-label" x="468" y="529">Brave</text>
+          </a>
+        </g>
+        <g class="leg-link">
+          <a href="https://www.ecosia.org/" target="_blank" rel="noopener noreferrer" aria-label="Search with Ecosia">
+            <path class="tentacle" d="M482 270 C500 350 490 430 610 505"/>
+            <path class="tentacle-shadow" d="M482 270 C500 350 490 430 610 505"/>
+            <path class="tentacle-color" d="M482 270 C500 350 490 430 610 505"/>
+            <g class="suckers">
+              <circle cx="492" cy="339" r="5"/><circle class="sucker-center" cx="492" cy="339" r="2"/>
+              <circle cx="492" cy="399" r="5"/><circle class="sucker-center" cx="492" cy="399" r="2"/>
+              <circle cx="513" cy="449" r="5"/><circle class="sucker-center" cx="513" cy="449" r="2"/>
+              <circle cx="549" cy="480" r="5"/><circle class="sucker-center" cx="549" cy="480" r="2"/>
+              <circle cx="582" cy="499" r="5"/><circle class="sucker-center" cx="582" cy="499" r="2"/>
+            </g>
+            <text class="leg-label" x="578" y="543">Ecosia</text>
+          </a>
+        </g>
+        <g class="leg-link">
+          <a href="https://www.startpage.com/" target="_blank" rel="noopener noreferrer" aria-label="Search with Startpage">
+            <path class="tentacle" d="M510 263 C550 335 570 425 722 525"/>
+            <path class="tentacle-shadow" d="M510 263 C550 335 570 425 722 525"/>
+            <path class="tentacle-color" d="M510 263 C550 335 570 425 722 525"/>
+            <g class="suckers">
+              <circle cx="539" cy="329" r="5"/><circle class="sucker-center" cx="539" cy="329" r="2"/>
+              <circle cx="554" cy="389" r="5"/><circle class="sucker-center" cx="554" cy="389" r="2"/>
+              <circle cx="583" cy="442" r="5"/><circle class="sucker-center" cx="583" cy="442" r="2"/>
+              <circle cx="629" cy="483" r="5"/><circle class="sucker-center" cx="629" cy="483" r="2"/>
+              <circle cx="678" cy="513" r="5"/><circle class="sucker-center" cx="678" cy="513" r="2"/>
+            </g>
+            <text class="leg-label" x="670" y="563">Startpage</text>
+          </a>
+        </g>
+        <g class="leg-link">
+          <a href="https://www.qwant.com/" target="_blank" rel="noopener noreferrer" aria-label="Search with Qwant">
+            <path class="tentacle" d="M535 247 C585 300 633 385 830 477"/>
+            <path class="tentacle-shadow" d="M535 247 C585 300 633 385 830 477"/>
+            <path class="tentacle-color" d="M535 247 C585 300 633 385 830 477"/>
+            <g class="suckers">
+              <circle cx="607" cy="301" r="5"/><circle class="sucker-center" cx="607" cy="301" r="2"/>
+              <circle cx="650" cy="350" r="5"/><circle class="sucker-center" cx="650" cy="350" r="2"/>
+              <circle cx="696" cy="391" r="5"/><circle class="sucker-center" cx="696" cy="391" r="2"/>
+              <circle cx="744" cy="427" r="5"/><circle class="sucker-center" cx="744" cy="427" r="2"/>
+              <circle cx="792" cy="458" r="5"/><circle class="sucker-center" cx="792" cy="458" r="2"/>
+            </g>
+            <text class="leg-label" x="790" y="516">Qwant</text>
+          </a>
+        </g>
+
+        <a class="head-link" href="https://github.com/dellaprice69" target="_blank" rel="noopener noreferrer" aria-label="Visit dellaprice69 on GitHub">
+          <path class="body-shape" fill="url(#mantle)"
+            d="M450 54 C374 54 329 117 337 188 C341 226 365 253 397 266
+               C414 273 431 266 450 266 C469 266 486 273 503 266
+               C535 253 559 226 563 188 C571 117 526 54 450 54Z"/>
+          <ellipse class="spots" cx="389" cy="158" rx="9" ry="14"/>
+          <ellipse class="spots" cx="514" cy="177" rx="8" ry="12"/>
+          <ellipse class="spots" cx="419" cy="219" rx="6" ry="9"/>
+          <ellipse class="spots" cx="484" cy="215" rx="6" ry="9"/>
+          <ellipse class="eye" cx="416" cy="197" rx="14" ry="19"/>
+          <ellipse class="eye" cx="484" cy="197" rx="14" ry="19"/>
+          <circle class="shine" cx="420" cy="191" r="5"/>
+          <circle class="shine" cx="488" cy="191" r="5"/>
+          <path d="M438 226 Q450 237 462 226" fill="none" stroke="#743c9b" stroke-width="5" stroke-linecap="round"/>
+        </a>
+      </svg>
+    </div>
+
+    <p class="hint">Click a tentacle to search, or click the octopus head to visit GitHub.</p>
+  </main>
+</body>
+</html>
