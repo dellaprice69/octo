@@ -158,9 +158,40 @@
       font-size: 0.92rem;
     }
 
+    .fun-fact {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      width: min(300px, calc(100% - 2rem));
+      padding: 0.8rem 1rem;
+      border: 1px solid #ffffff30;
+      border-radius: 1rem;
+      background: #1e2547ee;
+      box-shadow: 0 10px 30px #05081760;
+      text-align: left;
+      font-size: 0.88rem;
+      line-height: 1.4;
+      z-index: 10;
+    }
+
+    .fun-fact strong {
+      display: block;
+      margin-bottom: 0.25rem;
+      color: #ffd479;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
     @media (max-width: 600px) {
       body {
         padding: 1.5rem 0.6rem;
+      }
+
+      .fun-fact {
+        position: static;
+        width: auto;
+        margin: 0 0 1rem;
       }
 
       .art {
@@ -183,6 +214,11 @@
   </style>
 </head>
 <body>
+  <aside class="fun-fact" aria-live="polite">
+    <strong>Octopus fun fact</strong>
+    <span id="fun-fact-text"></span>
+  </aside>
+
   <main>
     <h1>Octo Search</h1>
     <p class="intro">Eight arms, eight ways to explore the web.</p>
@@ -325,7 +361,7 @@
           </a>
         </g>
 
-        <a class="head-link" href="https://github.com/dellaprice69" target="_blank" rel="noopener noreferrer" aria-label="Visit dellaprice69 on GitHub">
+        <a class="head-link" href="https://dellaprice69.github.io/octo/" target="_blank" rel="noopener noreferrer" aria-label="Open Octo Search on GitHub Pages">
           <path class="body-shape" fill="url(#mantle)"
             d="M450 54 C374 54 329 117 337 188 C341 226 365 253 397 266
                C414 273 431 266 450 266 C469 266 486 273 503 266
@@ -343,7 +379,30 @@
       </svg>
     </div>
 
-    <p class="hint">Click a tentacle to search, or click the octopus head to visit GitHub.</p>
+    <p class="hint">Click a tentacle to search, or click the octopus head to open the hosted page.</p>
   </main>
+
+  <script>
+    const facts = [
+      "An octopus has three hearts: two pump blood through the gills and one pumps it to the rest of the body.",
+      "Octopus blood is blue because it uses copper-based hemocyanin to carry oxygen.",
+      "Two-thirds of an octopus's neurons are in its arms, so each arm can act somewhat independently.",
+      "Octopuses can squeeze through any opening larger than their beak, the only hard part of their body.",
+      "An octopus can change both the color and the texture of its skin in a fraction of a second.",
+      "Octopuses have rectangular pupils that help them keep their eyes level, even when they move.",
+      "Octopuses can taste with their suckers, which are covered in chemical receptors.",
+      "A mother octopus often guards her eggs for months without eating until they hatch.",
+      "Octopuses have been seen using coconut shells as portable shelters.",
+      "Octopuses can regrow a lost arm.",
+      "The giant Pacific octopus can weigh over 100 pounds and span more than 14 feet.",
+      "Octopuses squirt ink that dulls a predator's sense of smell as well as blocking its view.",
+      "In lab tests, octopuses have unscrewed jar lids from the inside to escape.",
+      "Octopuses have no bones, so their bodies can flatten and flow through narrow gaps."
+    ];
+
+    const today = new Date();
+    const dayNumber = Math.floor(Date.UTC(today.getFullYear(), today.getMonth(), today.getDate()) / 86400000);
+    document.getElementById("fun-fact-text").textContent = facts[dayNumber % facts.length];
+  </script>
 </body>
 </html>
